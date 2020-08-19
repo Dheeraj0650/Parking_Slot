@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- <style>
+    .col-lg-4 {
+      text-align: center;
+      justify-content: center;
+      algin-item: center;
+    }
+
+    .card {
+      transition: 0.5s;
+    }
+
+    .card:hover {
+      transform: scale(1.1);
+      transition: 0.5s;
+    }
+  </style> -->
+  <link rel="stylesheet" href="style.min.css">
+</head>
+
+<body>
+  <section style="background-color:#251f44;">
+    <div class="container" style="padding:3rem;text-align:center">
+      <form class="" action="/Search" method="post">
+        <div class="row">
+          <div class="col-lg-6" style="padding:2rem">
+            <div class="input-group">
+              <input type="text" min="0930" max="2400" name="start" class="form-control" placeholder="From" aria-label="From" aria-describedby="basic-addon2">
+            </div>
+          </div>
+          <div class="col-lg-6" style="padding:2rem">
+            <div class="input-group">
+              <input type="text" min="0930" max="2400" name="end" class="form-control" placeholder="To" aria-label="To" aria-describedby="basic-addon2">
+
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-outline-light">Search</button>
+      </form>
+      <form action="/leave" method="post">
+        <button class="btn btn-dark btn-lg" type="submit" name = "slot" value = <%= slots[i][j].start %> style="margin-top:2rem">Leave</button>
+      </form>
+
+    </div>
+  </section>
+  <section style="padding:2rem">
+    <div class="container-fluid">
+      <% for(let i = 0;i < slots.length;i++) {%>
+      <div class="row">
+        <% for(let j = 0;j < slots[i].length ;j++) {%>
+        <div class="col-lg-4">
+          <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header"><%= slots[i][j].start%></div>
+            <div class="card-body">
+              <form class="" action="/payment" method="post">
+                <button type="submit" class="btn btn-outline-light" name="slot" value=<%= slots[i][j]._id %>> Book Slot</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <% } %>
+        <!-- <div class="col-lg-4">
+          <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+              <h5 class="card-title">Primary card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+              <h5 class="card-title">Primary card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div> -->
+      </div>
+      <% } %>
+    </div>
+    </div>
+  </section>
+
+</body>
+
+</html>
